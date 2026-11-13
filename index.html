@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Md. Mamunur Rashid · Portfolio · Designtech Architects &amp; C.G.I.</title>
 <meta name="description" content="Architecture, interiors, 3D visualisation and product design by Md. Mamunur Rashid (B.Arch, Khulna University) — Designtech Architects &amp; C.G.I.">
-<meta name="generator" content="SOLARA Live Portfolio 1.0 · build 22">
+<meta name="generator" content="SOLARA Live Portfolio 1.0 · build 23">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -2836,8 +2836,11 @@ nav.filters { flex-wrap: wrap; overflow: visible; }
     '.zv-bar button:hover{background:#c4302b}.zv-bar span{color:#bbb;font:12px system-ui,sans-serif;margin-left:auto}';
   var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
   var box = document.createElement('div'); box.className = 'zv'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-label', 'Picture');
-  box.innerHTML = '<div class="zv-bar"><button type="button" class="zv-x">✕ Close</button><button type="button" class="zv-fit">Fit</button><span>wheel or pinch to zoom · drag to move</span></div><img alt="">';
+  box.innerHTML = '<div class="zv-bar"><button type="button" class="zv-x">✕ Close</button><button type="button" class="zv-fit">Fit</button><span>wheel or pinch to zoom · left-drag to move</span></div><img alt="">';
   var img = box.querySelector('img');
+  // set 241 (his 13 Nov 18:40: "left click and drag any direction to pan"): the browser's own image drag stole the left
+  // button (it cancelled the pan, and the cancel was read as a tap that closed the picture) — switched off here
+  img.draggable = false; img.addEventListener('dragstart', function (e) { e.preventDefault(); });
   function mount() { if (!box.parentNode) document.body.appendChild(box); }
   var s = 1, tx = 0, ty = 0, bw = 0, bh = 0, bl = 0, bt = 0;
   function apply() { img.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + s + ')'; }
@@ -2863,10 +2866,12 @@ nav.filters { flex-wrap: wrap; overflow: visible; }
     zoomAt(e.clientX - r.left, e.clientY - r.top, e.deltaY < 0 ? 1.18 : 1 / 1.18);
   }, { passive: false });
   img.addEventListener('dblclick', function (e) { var r = box.getBoundingClientRect(); if (s > 1) fit(); else zoomAt(e.clientX - r.left, e.clientY - r.top, 2.5); });
-  var pts = {}, last = null, moved = 0, pinch = null;
+  var pts = {}, last = null, moved = 0, pinch = null, downOn = null, cancelled = false;
   box.addEventListener('pointerdown', function (e) {
     if (e.target.closest('.zv-bar')) return;
-    pts[e.pointerId] = { x: e.clientX, y: e.clientY }; moved = 0;
+    if (e.pointerType === 'mouse' && e.button !== 0 && e.button !== 1) return;
+    if (e.pointerType === 'mouse') e.preventDefault();
+    pts[e.pointerId] = { x: e.clientX, y: e.clientY }; moved = 0; downOn = e.target; cancelled = false;
     try { box.setPointerCapture(e.pointerId); } catch (x) {}
     var ids = Object.keys(pts);
     if (ids.length === 2) { var a = pts[ids[0]], b = pts[ids[1]]; pinch = { d: Math.hypot(a.x - b.x, a.y - b.y) }; }
@@ -2883,12 +2888,15 @@ nav.filters { flex-wrap: wrap; overflow: visible; }
     if (last) { var dx = e.clientX - last.x, dy = e.clientY - last.y; moved += Math.abs(dx) + Math.abs(dy); if (s > 1) { tx += dx; ty += dy; apply(); } last = { x: e.clientX, y: e.clientY }; }
   });
   function up(e) {
-    var wasTap = moved < 6 && Object.keys(pts).length === 1;
+    if (!pts[e.pointerId]) return;
+    if (e.type === 'pointercancel') cancelled = true;
+    var wasTap = !cancelled && moved < 6 && Object.keys(pts).length === 1;
     delete pts[e.pointerId]; img.classList.remove('drag');
     if (Object.keys(pts).length < 2) pinch = null;
     if (!Object.keys(pts).length) last = null;
     // a tap on the dark around it, or on the picture while it is not zoomed in (his set-191 order: a second tap goes back)
-    if (wasTap && (e.target === box || (e.target === img && s === 1))) close();
+    // the press's own target decides (pointer capture makes every release look as if it were on the dark box)
+    if (wasTap && (downOn === box || (downOn === img && s === 1))) close();
   }
   box.addEventListener('pointerup', up); box.addEventListener('pointercancel', up);
   document.addEventListener('keydown', function (e) {
