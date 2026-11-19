@@ -32,6 +32,7 @@ header{padding:14px 16px 6px} h1{font-size:18px;margin:0 0 4px} .sub{margin:0;co
 }
 button{border:1px solid var(--line);background:var(--btn);color:var(--ink);border-radius:8px;padding:8px 12px;font-size:14px;cursor:pointer}
 button.on{border-color:var(--on);outline:2px solid var(--on)}
+#stage{position:relative}#walkhint{position:absolute;left:12px;top:12px;right:12px;background:rgba(15,23,42,.78);color:#fff;font:13px system-ui,sans-serif;padding:8px 12px;border-radius:8px;pointer-events:none}
 #stage{position:relative;margin:0 16px}
 model-viewer{width:100%;height:68vh;background:linear-gradient(#bcd3ea,#e6edf3);border-radius:10px}
 #fs{position:absolute;left:10px;bottom:10px;z-index:3}
@@ -48,14 +49,15 @@ model-viewer{width:100%;height:68vh;background:linear-gradient(#bcd3ea,#e6edf3);
 .ss-thumbs button.on{outline:2px solid var(--on)}
 footer{padding:10px 16px 30px;color:var(--mute);font-size:12px}
 </style></head><body>
-<header><h1>P-016 P-16 Option A3, GF caretaker (18 Nov)</h1><p class="sub">Designtech Architects · Ar. Mamunur Rashid · updated 20 Nov 2026 02:03</p><div class="dl"><a href="https://drive.google.com/uc?export=download&amp;id=1CGQ-igPGI0FTYFXoGP917tKKgPp6sZmY" download>⬇ Plans &amp; renders (PDF)</a><a href="https://drive.google.com/uc?export=download&amp;id=1tHQTrbwKVySrOL8neu-YMaRFLNmgWZ3O" download>⬇ Working drawings (PDF)</a><a href="https://drive.google.com/uc?export=download&amp;id=1cQjEFf9ywSujKdKBu-slNrbYDRg3jR1p" download>⬇ Brochure (PDF)</a></div></header>
+<header><h1>P-016 P-16 Option A3, GF caretaker (18 Nov)</h1><p class="sub">Designtech Architects · Ar. Mamunur Rashid · updated 20 Nov 2026 02:06</p><div class="dl"><a href="https://drive.google.com/uc?export=download&amp;id=1CGQ-igPGI0FTYFXoGP917tKKgPp6sZmY" download>⬇ Plans &amp; renders (PDF)</a><a href="https://drive.google.com/uc?export=download&amp;id=1tHQTrbwKVySrOL8neu-YMaRFLNmgWZ3O" download>⬇ Working drawings (PDF)</a><a href="https://drive.google.com/uc?export=download&amp;id=1cQjEFf9ywSujKdKBu-slNrbYDRg3jR1p" download>⬇ Brochure (PDF)</a></div></header>
 <div class="bar tabs"><button class="tab" data-t="0">3D</button><button class="tab" data-t="1">Phase 2 · plans</button><button class="tab" data-t="2">Phase 3 · views</button><button class="tab" data-t="3">Phase 4 · look B (TH-H01 Brick Pylon with White Shelves)</button><button class="tab" data-t="4">Phase 5A · look B</button></div>
 <div id="three" hidden>
  <div class="bar" id="models"></div>
  <div class="bar" id="floors"></div>
- <div class="bar"><button id="eye">👁 Eye level</button><button id="air">🛰 From above</button><button id="spin">⟳ Turn</button><button id="edges" title="the faces with every box's edges drawn">▦ Edges</button><button id="reset" title="back to the standard perspective view">⟲ Reset view</button></div>
+ <div class="bar"><button id="eye">👁 Eye level</button><button id="air">🛰 From above</button><button id="spin">⟳ Turn</button><button id="edges" title="the faces with every box's edges drawn">▦ Edges</button><button id="reset" title="back to the standard perspective view">⟲ Reset view</button><button id="walk" title="fly through the model: W A S D to move, Q / E up and down, drag to look, Shift faster, Space slower, Esc to leave">🚶 Walk through</button></div>
  <div id="stage"><model-viewer id="mv" camera-controls touch-action="pan-y" shadow-intensity="1" exposure="1.05" environment-image="neutral"
  interaction-prompt="none" field-of-view="40deg" min-camera-orbit="auto 0deg 1m" max-camera-orbit="auto 120deg auto" max-field-of-view="75deg"></model-viewer>
+ <div id="walkhint" hidden>🚶 W A S D move · Q / E up / down · drag to look · Shift faster · Space slower · wheel = speed · Esc leaves</div>
  <button id="fs">⛶ Full screen</button></div>
  <p class="sub" style="padding:8px 16px">Drag to turn · wheel or pinch to zoom (on the pointer) · middle- or right-drag, or two fingers, to pan · Eye level = standing on the road across from the gate</p>
 </div>
@@ -147,7 +149,7 @@ footer{padding:10px 16px 30px;color:var(--mute);font-size:12px}
   window.ZoomView = { open: open, close: close };
 })();
 </script>
-<script id="meta" type="application/json">{"project": "P-016", "title": "P-016 P-16 Option A3, GF caretaker (18 Nov)", "updated": "20 Nov 2026 02:03", "tabs": ["3D", "Phase 2 \u00b7 plans", "Phase 3 \u00b7 views", "Phase 4 \u00b7 look B (TH-H01 Brick Pylon with White Shelves)", "Phase 5A \u00b7 look B"]}</script>
+<script id="meta" type="application/json">{"project": "P-016", "title": "P-016 P-16 Option A3, GF caretaker (18 Nov)", "updated": "20 Nov 2026 02:06", "tabs": ["3D", "Phase 2 \u00b7 plans", "Phase 3 \u00b7 views", "Phase 4 \u00b7 look B (TH-H01 Brick Pylon with White Shelves)", "Phase 5A \u00b7 look B"]}</script>
 <script>
 const T=[{"name": "3D", "models": [["Phase 3 · massing", "models/m0.glb", [["G", "models/m0_0.glb"], ["G", "models/m0_1.glb"], ["1", "models/m0_2.glb"], ["2", "models/m0_3.glb"], ["3", "models/m0_4.glb"], ["4", "models/m0_5.glb"]], "models/m0_e.glb", [["G", "models/m0_0_e.glb"], ["G", "models/m0_1_e.glb"], ["1", "models/m0_2_e.glb"], ["2", "models/m0_3_e.glb"], ["3", "models/m0_4_e.glb"], ["4", "models/m0_5_e.glb"]]], ["Phase 3 · structure (columns, beams, slabs)", "models/m7.glb", [], "models/m7_e.glb", []], ["Whole building · the look see-through over the full inside", "models/m8.glb", [], "models/m8_e.glb", []], ["Look B · TH-H01 Brick Pylon with White Shelves", "models/m9.glb", [], "models/m9_e.glb", []]], "pics": []}, {"name": "Phase 2 · plans", "models": [], "pics": [["PHASE2 PLAN", "https://lh3.googleusercontent.com/d/1NyME88dc4y8zeOu6-EwZXyogQaufEOeo=w2400", "https://drive.google.com/thumbnail?id=1NyME88dc4y8zeOu6-EwZXyogQaufEOeo&sz=w400"], ["P-016 2A Typical Floor 19Nov", "https://lh3.googleusercontent.com/d/1dDo4gRpyud0L0JxGzMwpDdCPupbCiDUx=w2400", "https://drive.google.com/thumbnail?id=1dDo4gRpyud0L0JxGzMwpDdCPupbCiDUx&sz=w400"], ["P-016 2B 1st to 4th Floor 19Nov", "https://lh3.googleusercontent.com/d/1LQvigg4wErmVcvhJqYGyY3wH1IsxqqfH=w2400", "https://drive.google.com/thumbnail?id=1LQvigg4wErmVcvhJqYGyY3wH1IsxqqfH&sz=w400"], ["P-016 2B Ground Floor 19Nov", "https://lh3.googleusercontent.com/d/1ccKjVHyS1YwjbzRlliYYrdf2kSlZn1NL=w2400", "https://drive.google.com/thumbnail?id=1ccKjVHyS1YwjbzRlliYYrdf2kSlZn1NL&sz=w400"], ["P-016 2B Roof 19Nov", "https://lh3.googleusercontent.com/d/1flcu9tSI0rYUSVyup1ssaeP3qEyNCKmo=w2400", "https://drive.google.com/thumbnail?id=1flcu9tSI0rYUSVyup1ssaeP3qEyNCKmo&sz=w400"]]}, {"name": "Phase 3 · views", "models": [], "pics": [["axo se", "https://lh3.googleusercontent.com/d/1NG0JqYeOjnwdUdJSXAE1raMyMk5QMwBB=w2400", "https://drive.google.com/thumbnail?id=1NG0JqYeOjnwdUdJSXAE1raMyMk5QMwBB&sz=w400"], ["axo sw", "https://lh3.googleusercontent.com/d/1FQjn9isGElrHmI74GK1TRTnVGXEX7DKl=w2400", "https://drive.google.com/thumbnail?id=1FQjn9isGElrHmI74GK1TRTnVGXEX7DKl&sz=w400"], ["elev E", "https://lh3.googleusercontent.com/d/1ibcuqL7bQGJ86gS-UYRyKVyQGVfL8qoB=w2400", "https://drive.google.com/thumbnail?id=1ibcuqL7bQGJ86gS-UYRyKVyQGVfL8qoB&sz=w400"], ["elev N", "https://lh3.googleusercontent.com/d/1I25c-l6atUbUdk4-nmYEU3iLe-22F_Ug=w2400", "https://drive.google.com/thumbnail?id=1I25c-l6atUbUdk4-nmYEU3iLe-22F_Ug&sz=w400"], ["elev S", "https://lh3.googleusercontent.com/d/1tTTgncsTm1L7FKlR44yaRvzTvRvDUifZ=w2400", "https://drive.google.com/thumbnail?id=1tTTgncsTm1L7FKlR44yaRvzTvRvDUifZ&sz=w400"], ["elev W", "https://lh3.googleusercontent.com/d/1wI49XnsDQSi-BJkakPEWv1QDXXmvPCKF=w2400", "https://drive.google.com/thumbnail?id=1wI49XnsDQSi-BJkakPEWv1QDXXmvPCKF&sz=w400"]]}, {"name": "Phase 4 · look B (TH-H01 Brick Pylon with White Shelves)", "models": [], "pics": [["option B aerial", "https://lh3.googleusercontent.com/d/1hQ2DpVS_c3qBh9fKT80k90pTElMak__6=w2400", "https://drive.google.com/thumbnail?id=1hQ2DpVS_c3qBh9fKT80k90pTElMak__6&sz=w400"], ["option B back", "https://lh3.googleusercontent.com/d/187Eb_9msl8f-YwvLlRenKRqeP5tx7Og5=w2400", "https://drive.google.com/thumbnail?id=187Eb_9msl8f-YwvLlRenKRqeP5tx7Og5&sz=w400"], ["option B back left", "https://lh3.googleusercontent.com/d/1wUXjoZCd8gtWZyuLxSaDqki74CMSumLp=w2400", "https://drive.google.com/thumbnail?id=1wUXjoZCd8gtWZyuLxSaDqki74CMSumLp&sz=w400"], ["option B back right", "https://lh3.googleusercontent.com/d/1GNFM3L_r6oHgrb_i43dXcE9q56jGyKjn=w2400", "https://drive.google.com/thumbnail?id=1GNFM3L_r6oHgrb_i43dXcE9q56jGyKjn&sz=w400"], ["option B front", "https://lh3.googleusercontent.com/d/1eD0Ij61Q10FdIEjYz0OLmM9WT1steBrR=w2400", "https://drive.google.com/thumbnail?id=1eD0Ij61Q10FdIEjYz0OLmM9WT1steBrR&sz=w400"], ["option B hero left", "https://lh3.googleusercontent.com/d/1dNiBOPli7s-dsTn_OaxOS2LUB-ld2j9y=w2400", "https://drive.google.com/thumbnail?id=1dNiBOPli7s-dsTn_OaxOS2LUB-ld2j9y&sz=w400"], ["option B hero right", "https://lh3.googleusercontent.com/d/13KLy65Nl8FNW5q7C_JNm28LpYuy-UP9u=w2400", "https://drive.google.com/thumbnail?id=13KLy65Nl8FNW5q7C_JNm28LpYuy-UP9u&sz=w400"], ["option B road left", "https://lh3.googleusercontent.com/d/1aMzEn-KKBlTlUHMpjc0dBFxp4aUbbyfp=w2400", "https://drive.google.com/thumbnail?id=1aMzEn-KKBlTlUHMpjc0dBFxp4aUbbyfp&sz=w400"], ["option B road right", "https://lh3.googleusercontent.com/d/1qpUwdjnkWF5REeb2dmZh0aYwO7h2TEeM=w2400", "https://drive.google.com/thumbnail?id=1qpUwdjnkWF5REeb2dmZh0aYwO7h2TEeM&sz=w400"], ["option B side E", "https://lh3.googleusercontent.com/d/1i8BTDvr4MnypkcTQ8bPDoExRPMwlhWmR=w2400", "https://drive.google.com/thumbnail?id=1i8BTDvr4MnypkcTQ8bPDoExRPMwlhWmR&sz=w400"], ["option B side W", "https://lh3.googleusercontent.com/d/1fNbLvr06IfoDTsi39GvDdbxhRYu9Ny0E=w2400", "https://drive.google.com/thumbnail?id=1fNbLvr06IfoDTsi39GvDdbxhRYu9Ny0E&sz=w400"], ["option B street", "https://lh3.googleusercontent.com/d/1WROi5Dd5Na1NOMHRG5HvuSxJt2r4iXnG=w2400", "https://drive.google.com/thumbnail?id=1WROi5Dd5Na1NOMHRG5HvuSxJt2r4iXnG&sz=w400"]]}, {"name": "Phase 5A · look B", "models": [], "pics": [["P-016 5A 1st to 4th Floor 19Nov", "https://lh3.googleusercontent.com/d/19FthZe6gLgRsuMmBp1bqNL4WjryLZ635=w2400", "https://drive.google.com/thumbnail?id=19FthZe6gLgRsuMmBp1bqNL4WjryLZ635&sz=w400"], ["P-016 5A Ground Floor 19Nov", "https://lh3.googleusercontent.com/d/1XXcx8z0WxtfxMxa0Wb3a4-zf3ndiJaFV=w2400", "https://drive.google.com/thumbnail?id=1XXcx8z0WxtfxMxa0Wb3a4-zf3ndiJaFV&sz=w400"], ["P-016 5A Roof 19Nov", "https://lh3.googleusercontent.com/d/1kbh16Gm1By1z0WfrQxa8LYRz7aIAAwQc=w2400", "https://drive.google.com/thumbnail?id=1kbh16Gm1By1z0WfrQxa8LYRz7aIAAwQc&sz=w400"], ["P-016 5A Top View 19Nov", "https://lh3.googleusercontent.com/d/1fQDuLTk5u-iqkK4OpFVkRIPPkCiqKBMn=w2400", "https://drive.google.com/thumbnail?id=1fQDuLTk5u-iqkK4OpFVkRIPPkCiqKBMn&sz=w400"]]}];
 const mv=document.getElementById('mv'),three=document.getElementById('three'),pics=document.getElementById('pics');
@@ -206,7 +208,7 @@ function _pan(dx,dy){const o=mv.getCameraOrbit(),tg=mv.getCameraTarget(),th=o.th
  const fov=(mv.getFieldOfView?mv.getFieldOfView():40)*Math.PI/180,k=2*o.radius*Math.tan(fov/2)/Math.max(1,mv.clientHeight);
  const rx=Math.cos(th),rz=-Math.sin(th),ux=-Math.cos(ph)*Math.sin(th),uy=Math.sin(ph),uz=-Math.cos(ph)*Math.cos(th);
  mv.cameraTarget=`${tg.x-(dx*rx-dy*ux)*k}m ${tg.y+dy*uy*k}m ${tg.z-(dx*rz-dy*uz)*k}m`;if(mv.jumpCameraToGoal)mv.jumpCameraToGoal();}
-mv.addEventListener('wheel',e=>{if(e.ctrlKey)return;e.preventDefault();e.stopImmediatePropagation();
+mv.addEventListener('wheel',e=>{if(WALK){e.preventDefault();e.stopImmediatePropagation();SPD=Math.max(0.3,Math.min(40,SPD*(e.deltaY>0?0.85:1.18)));_whint();return;}if(e.ctrlKey)return;e.preventDefault();e.stopImmediatePropagation();
  const o=mv.getCameraOrbit(),tg=mv.getCameraTarget(),f=Math.exp(Math.max(-1,Math.min(1,e.deltaY/(e.deltaMode===1?3:100)))*0.18);
  const r=mv.getBoundingClientRect(),px=e.clientX-r.left-r.width/2,py=e.clientY-r.top-r.height/2;
  // the point under the pointer: the model's surface there, else that spot on the plane through the view's centre
@@ -217,13 +219,49 @@ mv.addEventListener('wheel',e=>{if(e.ctrlKey)return;e.preventDefault();e.stopImm
  const t=1-f;mv.cameraTarget=`${tg.x+(hx-tg.x)*t}m ${tg.y+(hy-tg.y)*t}m ${tg.z+(hz-tg.z)*t}m`;
  mv.cameraOrbit=`${o.theta}rad ${o.phi}rad ${Math.max(0.5,o.radius*f)}m`;if(mv.jumpCameraToGoal)mv.jumpCameraToGoal();},{capture:true,passive:false});
 let MID=null;
-mv.addEventListener('pointerdown',e=>{if(e.button!==1)return;e.preventDefault();e.stopImmediatePropagation();MID=[e.clientX,e.clientY];try{mv.setPointerCapture(e.pointerId);}catch(_){}},{capture:true});
+mv.addEventListener('pointerdown',e=>{if(WALK||e.button!==1)return;e.preventDefault();e.stopImmediatePropagation();MID=[e.clientX,e.clientY];try{mv.setPointerCapture(e.pointerId);}catch(_){}},{capture:true});
 mv.addEventListener('pointermove',e=>{if(!MID)return;e.preventDefault();e.stopImmediatePropagation();_pan(e.clientX-MID[0],e.clientY-MID[1]);MID=[e.clientX,e.clientY];},{capture:true});
 ['pointerup','pointercancel'].forEach(n=>mv.addEventListener(n,e=>{if(MID&&e.button===1){e.stopImmediatePropagation();}if(e.button===1||n==='pointercancel')MID=null;},{capture:true}));
 mv.addEventListener('mousedown',e=>{if(e.button===1)e.preventDefault();});   // no browser auto-scroll on the middle button
 const st=document.getElementById('stage'),fs=document.getElementById('fs');
 fs.onclick=()=>{if(document.fullscreenElement){document.exitFullscreen();}else if(st.requestFullscreen){st.requestFullscreen();}else if(st.webkitRequestFullscreen){st.webkitRequestFullscreen();}};
 document.addEventListener('fullscreenchange',()=>{const on=!!document.fullscreenElement;fs.textContent=on?'↩ Back':'⛶ Full screen';mv.style.height=on?'100vh':'68vh';});
+// set 260 (his 20 Nov ~02:3x: "a walk through button, upon activated we can use lumion like controls to go in out
+// flythrough the 3d model as we press wasd, with shift pressed the speed will increase"): a first-person fly-through — the
+// camera stands at the eye point, a hair from its target; W A S D move on the level, Q / E rise and sink, the pointer drag
+// looks round, Shift ×4, Space ×¼, the wheel sets the speed; Esc or the button leaves and puts the standard view back
+let WALK=false,SPD=3,KEYS={},WTH=0,WPH=Math.PI/2,WE=null,WLAST=0,LOOK=null;const WR=0.05;
+const wb=document.getElementById('walk'),wh=document.getElementById('walkhint');
+function _sph(th,ph){return [Math.sin(ph)*Math.sin(th),Math.cos(ph),Math.sin(ph)*Math.cos(th)];}
+function _whint(){wh.textContent='🚶 W A S D move · Q / E up / down · drag to look · Shift faster · Space slower · wheel = speed ('+SPD.toFixed(1)+' m/s) · Esc leaves';}
+function _wapply(){const s=_sph(WTH,WPH);mv.cameraTarget=`${WE[0]-s[0]*WR}m ${WE[1]-s[1]*WR}m ${WE[2]-s[2]*WR}m`;
+ mv.cameraOrbit=`${WTH}rad ${WPH}rad ${WR}m`;if(mv.jumpCameraToGoal)mv.jumpCameraToGoal();}
+function walkOn(){const o=mv.getCameraOrbit(),tg=mv.getCameraTarget(),s=_sph(o.theta,o.phi);
+ WE=[tg.x+s[0]*o.radius,tg.y+s[1]*o.radius,tg.z+s[2]*o.radius];WTH=o.theta;WPH=o.phi;
+ WALK=true;mv.autoRotate=false;mv.cameraControls=false;mv.minCameraOrbit='auto 1deg 0.01m';mv.maxCameraOrbit='auto 179deg auto';
+ mv.fieldOfView='60deg';wb.classList.add('on');wh.hidden=false;_whint();_wapply();WLAST=performance.now();requestAnimationFrame(_wstep);mv.focus&&mv.focus();}
+function walkOff(){WALK=false;KEYS={};LOOK=null;wb.classList.remove('on');wh.hidden=true;mv.cameraControls=true;
+ mv.minCameraOrbit='auto 0deg 1m';mv.maxCameraOrbit='auto 120deg auto';reset();}
+function _wstep(t){if(!WALK)return;const dt=Math.min(0.1,(t-WLAST)/1000);WLAST=t;
+ let v=SPD*(KEYS.shift?4:1)*(KEYS[' ']?0.25:1)*dt;const f=[-Math.sin(WTH),0,-Math.cos(WTH)],r=[Math.cos(WTH),0,-Math.sin(WTH)];
+ let mx=0,my=0,mz=0;
+ if(KEYS.w||KEYS.arrowup){mx+=f[0];mz+=f[2];}if(KEYS.s||KEYS.arrowdown){mx-=f[0];mz-=f[2];}
+ if(KEYS.d||KEYS.arrowright){mx+=r[0];mz+=r[2];}if(KEYS.a||KEYS.arrowleft){mx-=r[0];mz-=r[2];}
+ if(KEYS.q||KEYS.pageup){my+=1;}if(KEYS.e||KEYS.pagedown){my-=1;}
+ const n=Math.hypot(mx,my,mz);if(n>0){WE[0]+=mx/n*v;WE[1]+=my/n*v;WE[2]+=mz/n*v;_wapply();}
+ requestAnimationFrame(_wstep);}
+wb.onclick=()=>{if(WALK)walkOff();else walkOn();};
+document.addEventListener('keydown',e=>{if(!WALK)return;const k=e.key.toLowerCase();
+ if(k==='escape'){walkOff();return;}
+ if(['w','a','s','d','q','e',' ','shift','arrowup','arrowdown','arrowleft','arrowright','pageup','pagedown'].includes(k)){KEYS[k]=true;e.preventDefault();e.stopImmediatePropagation();}},true);
+document.addEventListener('keyup',e=>{const k=e.key.toLowerCase();delete KEYS[k];if(k==='shift')delete KEYS.shift;},true);
+window.addEventListener('blur',()=>{KEYS={};});
+mv.addEventListener('pointerdown',e=>{if(!WALK)return;e.preventDefault();e.stopImmediatePropagation();LOOK=[e.clientX,e.clientY];
+ try{mv.setPointerCapture(e.pointerId);}catch(_){}},{capture:true});
+mv.addEventListener('pointermove',e=>{if(!WALK||!LOOK)return;e.preventDefault();e.stopImmediatePropagation();
+ WTH-=(e.clientX-LOOK[0])*0.004;WPH=Math.max(0.05,Math.min(Math.PI-0.05,WPH-(e.clientY-LOOK[1])*0.004));LOOK=[e.clientX,e.clientY];_wapply();},{capture:true});
+['pointerup','pointercancel'].forEach(n=>mv.addEventListener(n,e=>{if(WALK){LOOK=null;e.stopImmediatePropagation();}},{capture:true}));
+mv.addEventListener('contextmenu',e=>{if(WALK)e.preventDefault();});
 let FIRST=true;mv.addEventListener('load',()=>{if(FIRST){FIRST=false;reset();}});
 open(0);
 </script></body></html>
